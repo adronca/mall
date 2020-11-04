@@ -6,6 +6,11 @@
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
   <title>Document</title>
 </head>
+<style>
+  .new-images {
+    margin-left: -40px;
+  }
+</style>
 <body>
   <% 
   let imagesArray = Object.values(images) 
@@ -19,8 +24,13 @@
   <div class="xl:container xl:mx-auto">
     <%- include('components/navbar'); %>
     <img width="100%" src="/img/<%= arr[0] %>">
-    <h2>Новинки</h2>
-    <img src="/img/new/<%=Object.values(newImages)[0].path%>">
+    <h2 class="text-center text-black text-2xl mt-10 mb-5">Новинки</h2>
+    <div class="new-images flex">
+    <% for (let image of Object.values(newImages)) { %>
+      <img style="margin-left: 40px; width: 400px" src="/img/new/<%= image.path %>">
+    <% } %>
+    </div>
+    <%- include('components/brands'); %>
   </div>
 <script src="/js/home.js"></script>
 </body>

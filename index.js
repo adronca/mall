@@ -21,9 +21,11 @@ app.get('/', async (req, res) => {
     //model
   const homeImage = require('./models/homeImages')
   const newImage = require('./models/boardImages')
+  const Brands = require('./models/brands')
   const images = await homeImage.find();
   const newImages = await newImage.find();
-  res.render('home', { images: images, newImages: newImages });
+  const brands = await Brands.find();
+  res.render('home', { images: images, newImages: newImages, brands: brands });
 })
 
 app.get('/image', (req, res) => {
